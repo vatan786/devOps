@@ -1,5 +1,6 @@
 node {
     checkout scm
+     agent any
      stages("Git Checkout")
     {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
