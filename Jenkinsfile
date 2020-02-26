@@ -1,7 +1,8 @@
 node {
-    checkout scm
-     stages("Git Checkout")
+    stages("Git Checkout")
     {
+    checkout scm
+     
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
 
         def customImage = docker.build("vatan786/jenkinsdocker")
