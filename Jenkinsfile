@@ -1,7 +1,8 @@
 node {
     checkout scm
-     agent any
+     
      stages("Git Checkout")
+      stage('Clone repository') {
     {
     docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
 
@@ -11,4 +12,5 @@ node {
         customImage.push()
     }
     }
+      }
 }
