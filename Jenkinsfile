@@ -20,12 +20,12 @@ node {
         }
     }
 
-    stage('Pull image') {
+    stage('Push image') {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
         docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
-            app.pull("${env.BUILD_NUMBER}")
+            app.push("${env.BUILD_NUMBER}")
        
             } 
                 echo "Trying to Push Docker Build to DockerHub"
