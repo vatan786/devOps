@@ -9,8 +9,9 @@ node {
 
     stage('Build image') {
         /* This builds the actual image */
-
+	    docker.withRegistry('https://registry.hub.docker.com', 'dockerHubs'){
         app = docker.build("vatan786/pythonwebapptest")
+	    }
     }
 
     stage('Test image') {
@@ -24,10 +25,8 @@ node {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerHubs') {
             app.push("${env.BUILD_NUMBER}")
-       
-            } 
+      
                 echo "Trying to Push Docker Build to DockerHub"
     }
 }
